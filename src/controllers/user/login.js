@@ -63,17 +63,16 @@ const login = async (req, res) => {
 
     // token creation
     const tokenObject = jwttoken(userData._id, userData.is_premium_user);
-    // res.setHeader("x-api-key", tokenObject.token);
+    res.cookie('token', tokenObject, {
+      httpOnly: true, // Ensures the cookie is accessible only through HTTP requests
+    });
+    
 
-    // res.cookie('refreshToken',`${tokenObject.refreshToken}`,{maxAge:86400*7000,httpOnly:true})
 
-    const data = {
-      userId: userData._id,
-      "x-api-key": tokenObject.token,
-    };
+    
     return res
       .status(200)
-      .send({ status: true, message: "User login successfull", data });
+      .send({ status: true, message: "User login successfull" });
   } catch (error) {
     return res.status(500).send({ status: false, message: error.message });
   }

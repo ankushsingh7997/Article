@@ -79,7 +79,7 @@ const createArticle=async (data)=>
     }
 
 }
-
+// get article
 const getArticle=async(id)=>{
     try{
          return await articleModel.findOne({_id:id})
@@ -90,5 +90,18 @@ const getArticle=async(id)=>{
     }
 
 }
+// get all article
 
-module.exports={checkEmailAndNumber,createData,checkEmail,updateData,createArticle,getArticle}
+const getAllArticle=async(obj)=>{
+    try{
+         return await articleModel.find(obj)
+    }
+    catch(error)
+    {
+        return {status:true,message:error.message}
+    }
+
+}
+
+
+module.exports={checkEmailAndNumber,createData,checkEmail,updateData,createArticle,getArticle,getAllArticle}

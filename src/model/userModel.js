@@ -21,6 +21,13 @@ const userSchema=new mongoose.Schema({
     is_premium_user:{
         type:Boolean,
         default:false
+    },number:{
+        type:Number,
+        required:true
+    },
+    isDeleted:{
+        type:Boolean,
+        default:false
     }
 
 

@@ -3,9 +3,7 @@ const app=express();
 const helmet=require('helmet')
 const morgan=require('morgan');
 const { dbConnection } = require('./src/db/dbConnection');
-const articleRouter = require('./src/routes/article');
-const commentsRouter = require('./src/routes/comments');
-const userRouter=require('./src/routes/user')
+const route=require('./src/routes/router')
 require('dotenv').config();
 const PORT=process.env.PORT ||4000;
 
@@ -39,9 +37,8 @@ app.use((req, res, next) => {
     return res.status(200).send({status:true,message:'working fine 🚀 🚀 🚀'})
   });
 
-  app.use('/api/user',userRouter)
-  app.use('/api/comments',commentsRouter)
-  app.use('/api/article',articleRouter)
+  app.use('/',route)
+ 
 
   app.listen(PORT,()=>{
     console.log(`application is running on ${PORT} 🟢` );

@@ -5,16 +5,19 @@ const {
   validPhone,
 } = require("../../validations/validation");
 const bcrypt = require("bcrypt");
-const services=require('../../db/dbServiecs')
+const services = require("../../db/dbServiecs");
 
 const login = async (req, res) => {
   try {
     let { emailOrNumber, password } = req.body;
-    if(!emailOrNumber||!password) return res.status(400).send({status:false,message:"please fill all the fields"})
+    if (!emailOrNumber || !password)
+      return res
+        .status(400)
+        .send({ status: false, message: "please fill all the fields" });
     const userDetail = { isDeleted: false };
     // check for email or number and their validation
     if (emailOrNumber.includes("@")) {
-    emailOrNumber = checkFormat(emailOrNumber);
+      emailOrNumber = checkFormat(emailOrNumber);
       if (!emailOrNumber)
         return res
           .status(403)
@@ -43,22 +46,23 @@ const login = async (req, res) => {
 
     let userData = await services.checkEmail(userDetail);
     if (!userData)
-      return res
-        .status(404)
-        .send({
-          status: false,
-          message: "no user found",
-        });
+      return res.status(404).send({
+        status: false,
+        message: "no user found",
+      });
     else {
       const comparePassword = bcrypt.compareSync(password, userData.password);
       if (!comparePassword)
         return res
           .status(400)
-          .send({ status: false, message: "incorrect number/email or password" });
+          .send({
+            status: false,
+            message: "incorrect number/email or password",
+          });
     }
 
     // token creation
-    const tokenObject = jwttoken(userData._id,userData.is_premium_user);
+    const tokenObject = jwttoken(userData._id, userData.is_premium_user);
     // res.setHeader("x-api-key", tokenObject.token);
 
     // res.cookie('refreshToken',`${tokenObject.refreshToken}`,{maxAge:86400*7000,httpOnly:true})

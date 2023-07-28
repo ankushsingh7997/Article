@@ -1,5 +1,7 @@
 const articleModel = require("../model/articleModel");
 const userModel = require("../model/userModel");
+const commentsModel=require('../model/commentsModel')
+
 // user section
 const checkEmailAndNumber = async (email, number) => {
   try {
@@ -33,7 +35,7 @@ const checkEmail = async (object) => {
     if (user) return user;
     else return false;
   } catch (error) {
-    return new Error(error);
+    throw new Error(error);
   }
 };
 
@@ -44,7 +46,7 @@ const updateData = (id, data) => {
       new: true,
     });
   } catch (error) {
-    return { status: false, message: error.message };
+     throw new Error(error)
   }
 };
 
@@ -76,6 +78,12 @@ const getAllArticle = async (obj) => {
   }
 };
 
+// comment
+const comment=async(obj)=>{
+    
+    return await commentsModel.create(obj)
+}
+
 module.exports = {
   checkEmailAndNumber,
   createData,
@@ -84,4 +92,5 @@ module.exports = {
   createArticle,
   getArticle,
   getAllArticle,
+  comment,
 };

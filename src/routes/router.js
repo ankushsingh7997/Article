@@ -9,6 +9,8 @@ const { getArticle } = require('../controllers/article/getArticle');
 const { premiumCheck } = require('../middleware/premium');
 const { authentication2 } = require('../middleware/authentication2');
 const { getAllArticles } = require('../controllers/article/getAllArticle');
+const { comment } = require('../controllers/comments/comment');
+const { goPremium } = require('../controllers/premium/goPremium');
 const router=express.Router();
 // user section
 // user regestration
@@ -29,6 +31,12 @@ router.get('/getArticle/:id',premiumCheck,authentication,authentication2,getArti
 // get all articles
 
 router.get('/getAllArticles',authentication,getAllArticles)
+
+// comment
+router.post('/comment',authentication,authentication2,comment)
+
+// go premium
+router.post('/goPremium',authentication,authentication2,goPremium)
 
 
 

@@ -42,26 +42,26 @@ Install dependencies using npm install
 Create a .env file with the following variables:
 * `URI` - MongoDB Atlas connection string
 * `PORT` - Port to run the server on
-* `JWT_ACCESS_KEY` - Secret key for JWT access token◉ 
+* `JWT_ACCESS_KEY` - Secret key for JWT access token 
 * `JWT_ACCESS_EXPIRE` - Expiration time for JWT access token
 
 ## Database Schema
 1.User Collection
-◉ name (String)
-◉ number (String)
-◉ email (String)
-◉ password (String)
-◉ is_premium (Boolean)
+* name (String)
+* number (String)
+* email (String)
+* password (String)
+* is_premium (Boolean)
 
 2.Article Collection
-◉ title (String)
-◉ content (String)
-◉ is_premium (Boolean)
+* title (String)
+* content (String)
+* is_premium (Boolean)
 
 3.Comment Collection
-◉ article_reference (Reference to Article Collection)
-◉ user_reference (Reference to User Collection)
-◉ comment (String)
+* article_reference (Reference to Article Collection)
+* user_reference (Reference to User Collection)
+* comment (String)
 
 
 
@@ -81,28 +81,28 @@ Create a .env file with the following variables:
 
 ## API Endpoints
 User Signup (POST) - /signup        
-    ◉ Allows users to sign up with their name, number, email, and password.
+* Allows users to sign up with their name, number, email, and password.
 
 User Login (POST) - /login
-    ◉ Allows users to log in using their number or email and password.
+* Allows users to log in using their number or email and password.
 
 User Profile Edit (POST) - /editUser
-    ◉ Allows logged-in users to edit their profile information.
+* Allows logged-in users to edit their profile information.
 
 User Delete (DELETE) - /deleteUser
-    ◉ Allows logged-in users to delete their profiles.
+* Allows logged-in users to delete their profiles.
 
 Get Article (GET) - /getArticle/:id
-    ◉ Fetches a specific article by ID. Premium articles require authentication.
+* Fetches a specific article by ID. Premium articles require authentication.
 
 Get All Articles (GET) - /getAllArticles
-    ◉ Fetches all articles. Premium articles require authentication.
+* Fetches all articles. Premium articles require authentication.
 
 Comment on Articles (POST) - /comment
-    ◉ Allows logged-in users to comment on articles.
+* Allows logged-in users to comment on articles.
 
 Go Premium (POST) - /goPremium
-    ◉ Allows logged-in users to upgrade to premium (change is_premium field).
+* Allows logged-in users to upgrade to premium (change is_premium field).
 
 
 

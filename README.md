@@ -107,16 +107,20 @@ Go Premium (POST) - /goPremium
 
 
 ## Depedencies
+*"bcrypt": "^5.1.0",
 
-* aws-sdk: ^2.955.0
-* bcrypt: ^5.0.1
-* cors: ^2.8.5
-* dotenv: ^10.0.0
-* express: ^4.17.1
-* jsonwebtoken: ^8.5.1
-* mongoose: ^6.1.5
-* multer-s3: ^2.9.0
-* openai: ^3.0.1
+*"dotenv": "^16.3.1",
+
+*"express": "^4.18.2",
+
+*"helmet": "^7.0.0",
+
+*"jsonwebtoken": "^9.0.1",
+
+*"mongoose": "^7.4.1",
+
+*"morgan": "^1.10.0"
+
 
 
 
